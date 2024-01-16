@@ -18,7 +18,8 @@ From the circuit diagram of the TMS99105 SBC it should be apparent that the boar
 ### Terminal Communications Interface
 Communications Interface
 The board is designed to communicate through a standard DTE/DTA RS232 serial connection to the user terminal which will normally be a PC running a terminal application. This application can then be used to execute commands on the SBC and to download programmes, etc. A typical interface is shown on the left.
-<img src="images/CommunicationsInterface.jpg" alt="CommsInterface" width="800" >
+
+<img src="images/CommunicationsInterface.png" alt="CommsInterface" width="350" >
 
 Terminal software on the PC can be readily found on the internet and you should chose the one that has the interface you feel most comfortable with. The important requirement is that the terminal programme is able to download files.
 
@@ -26,6 +27,11 @@ Terminal software on the PC can be readily found on the internet and you should 
 Installing the TIMON DEBUG ROMs
 The DEBUG Monitor can reside in either a 2716 or 2732 (16k or 32k) ROM located at address F000H in the TMS99105's memory space and because the CPU is 16 bit requires that if you use 8bit EPROMs such as the 2716 or 2732 that you split the DEBUG Monitor HEX file into upper and lower bytes. The a99.exe assembler produces INTEL format HEX files for loading into an EPROM burner so that the EPROMs can be programmed. The complete package, including the source, HEX files and the assembler can be downloaded from here. .
 
+<img src="images/Terminal_Session.png" alt="CommsInterface" width="350" >
+
+### Memory Map
 The programming of the EPROMS can be a little tricky and the following memory map hopefully makes sense of it. As we are using 2732 (32k) EPROMs and because we have our TIMON debugging monitor located at F000H we need to offset the location of code in the EPROMS 0800H. So, if you are using an EPROM burner similar to the Wellon VP-280 (which is what I use) you would load the file odd bytes into the programme�s memory specifiying a length of 1000H and a destination location of 0800H. This would result in an image similar to that shown in the diagram left.Terminal Session
+
+<img src="images/DEBUG_MONITOR_MEMORY_MAP.png" alt="CommsInterface" width="350" >
 
 The method of loading software programmes into memory and executing them is described in the Building the Small OS page.
