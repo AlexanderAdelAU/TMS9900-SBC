@@ -5,13 +5,15 @@ You can build the H99 file for uploading to the TMS 99105A SBC by just using the
 
 <pre>A99 DSKINIT SCHCLC</pre>
 
-Note that before this can be run, you must have uploaded or have in ROM the code for the MONITOR.H99 as this contains all the DISK I/O Routines and the Boot code.
+Note that before this can be run, you must have uploaded the hex files for the Monitor, BDOS and Shell.   The MONITOR.H99 contains all the DISK I/O Routines and the Boot code.
 
 So the steps are:
 
 <pre>
   "IN TMS 9900 TIMON"
   >>U    "Using the terminal programme now upload the file MONITOR.H99
+  >>U    "Using the terminal programme now upload the file BDOS.H99
+  >>U    "Using the terminal programme now upload the file SHELL.H99
   >>U    "Using the terminal programme now upload DISKINT2.H99 to address D600H
   >>D600 X  "This execute the DISKINIT code to initialise the disc.
 </pre>
