@@ -5,7 +5,7 @@ You can build the H99 file for uploading to the TMS 99105A SBC by just using the
 
 <pre>A99 DSKINIT SCHCLC</pre>
 
-Note that before this can be run, you must have uploaded or have in ROM the code for the MONITOR.A99 as this contains all the DISK I/O Routines and the Boot code.
+Note that before this can be run, you must have uploaded or have in ROM the code for the MONITOR.H99 as this contains all the DISK I/O Routines and the Boot code.
 
 So the steps are:
 
