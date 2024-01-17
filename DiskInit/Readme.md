@@ -10,7 +10,7 @@ Note that before this can be run, you must have uploaded or have in ROM the code
 So the steps are:
 
 <pre>
-  <<TMS 9900 TIMON>>
+  "IN TMS 9900 TIMON"
   >>U    "Using the terminal programme now upload the file MONITOR.H99
   >>U    "Using the terminal programme now upload DISKINT2.H99 to address D600H
   >>D600 X  "This execute the DISKINIT code to initialise the disc.
