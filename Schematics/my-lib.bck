@@ -1,0 +1,12 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 74LS157
+D Quadruple 2-Line to 1-Line Data Selector/Multiplexer
+$ENDCMP
+#
+$CMP 74S188
+D 256 Bit TTL PROM
+K Decoder
+$ENDCMP
+#
+#End Doc Library
