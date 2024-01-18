@@ -14,8 +14,8 @@ So the steps are:
   >>U    "Using the terminal programme now upload the file MONITOR.H99
   >>U    "Using the terminal programme now upload the file BDOS.H99
   >>U    "Using the terminal programme now upload the file SHELL.H99
-  >>U    "Using the terminal programme now upload DISKINT2.H99 to address D600H
-  >>D600 X  "This execute the DISKINIT code to initialise the disc.
+  >>U    "Using the terminal programme now upload DISKINT2.H99 to address 0100H
+  >>0100 X  "This execute the DISKINIT code to initialise the disc.
 </pre>
 
 
