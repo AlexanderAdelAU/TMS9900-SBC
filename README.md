@@ -29,8 +29,8 @@ The DEBUG Monitor can reside in either a 2716 or 2732 (16k or 32k) ROM located a
 
 <img src="images/Terminal_Session.png" alt="CommsInterface" width="350" >
 
-### Memory Map
-The programming of the EPROMS can be a little tricky and the following memory map hopefully makes sense of it. As we are using 2732 (32k) EPROMs and because we have our TIMON debugging monitor located at F000H we need to offset the location of code in the EPROMS 0800H. So, if you are using an EPROM burner similar to the Wellon VP-280 (which is what I use) you would load the file odd bytes into the programme�s memory specifiying a length of 1000H and a destination location of 0800H. This would result in an image similar to that shown in the diagram left.Terminal Session
+### ROM Memory Map
+The programming of the EPROMS can be a little tricky and the following memory map hopefully makes sense of it. As we are using 2732 (32k) EPROMs and because we have our TIMON debugging monitor located at F000H we need to offset the location of code in the EPROMS 0800H. So, if you are using an EPROM burner similar to the Wellon VP-280 (which is what I use) you would load the file odd bytes into the programme's memory specifiying a length of 1000H and a destination location of 0800H. This would result in an image similar to that shown in the diagram left.Terminal Session
 
 <img src="images/DEBUG_MONITOR_MEMORY_MAP.png" alt="CommsInterface" width="350" >
 
