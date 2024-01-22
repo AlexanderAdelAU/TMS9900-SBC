@@ -5,5 +5,5 @@ Once the disc has been initialised, you can boot the operating system and Shell 
 <pre>
   >>TIMON Monitor
   >>U       "From the terminal programme download Boot.H99"
-  >>X C400  "This will run the small boot application to boot the disc"
+  >>X C400  "This will run the small boot application to boot from the disc"
 </pre>
