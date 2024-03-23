@@ -32,6 +32,10 @@ The DEBUG Monitor can reside in either a 2716 or 2732 (16k or 32k) ROM located a
 ### ROM Memory Map
 The programming of the EPROMS can be a little tricky and the following memory map hopefully makes sense of it. As we are using 2732 (32k) EPROMs and because we have our TIMON debugging monitor located at F000H we need to offset the location of code in the EPROMS 0800H. So, if you are using an EPROM burner similar to the Wellon VP-280 (which is what I use) you would load the file odd bytes into the programme's memory specifiying a length of 1000H and a buffer destination location of 0800H, which corresponds to the hex file's location of f000h. Because the HEX file combines the upper and lower bytes you need to specify this when reading the file into the programmer by (for the high bytes) that the files alternate bytes are read.   See the following diagram.
 
-<img src="images/DEBUG_MONITOR_MEMORY_MAP.png" alt="CommsInterface" width="350" > <img src="images/Wellon Programmer.png" alt="CommsInterface" width="450" >
+| Image 1 | Image 2 |
+|---|---|
+|![Alt text for Image 1]("images/DEBUG_MONITOR_MEMORY_MAP.png" alt="Memory Map" width="350")|![Alt text for Image 2](img src="images/Wellon Programmer.png")|
+
+<img src="images/DEBUG_MONITOR_MEMORY_MAP.png" alt="Memory Map" width="350" > <img src="images/Wellon Programmer.png" alt="Programming Method" width="450" >
 
 The method of loading software programmes into memory and executing them is described in the Building the Small OS page.
