@@ -36,6 +36,7 @@ The programming of the EPROMS can be a little tricky and the following memory ma
 
 
 
+
 <img src="images/DEBUG_MONITOR_MEMORY_MAP.png" alt="Memory Map" width="350" style="vertical-align: top" > <img src="images/Wellon Programmer.png" alt="Programming Method" width="450"  style="vertical-align: top">
 
 The method of loading software programmes into memory and executing them is described in the Building the Small OS page.
