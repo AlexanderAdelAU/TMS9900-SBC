@@ -34,6 +34,6 @@ The programming of the EPROMS can be a little tricky and the following memory ma
 
 <img src="images/DEBUG_MONITOR_MEMORY_MAP.png" alt="CommsInterface" width="350" >
 
-<img src="images/WELLON_PROGRAMMER.png" alt="CommsInterface" width="350" >
+<img src="images/Wellon Programmer.png" alt="CommsInterface" width="350" >
 
 The method of loading software programmes into memory and executing them is described in the Building the Small OS page.
