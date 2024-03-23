@@ -34,7 +34,7 @@ The programming of the EPROMS can be a little tricky and the following memory ma
 
 <div>
     <img src="images/DEBUG_MONITOR_MEMORY_MAP.png" alt="Memory Map" width="350" style="margin-bottom: -4px;">
-    <img src="images/Wellon Programmer.png" alt="Programming Method" width="350" style="margin-bottom: -14px;">
+    <img src="images/Wellon Programmer.png" alt="Programming Method" width="350" style="margin-bottom: 14px;">
 </div>
 
 
