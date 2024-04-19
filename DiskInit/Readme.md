@@ -9,13 +9,13 @@ Note that before this can be run, you must have uploaded the hex files for the M
 
 So the steps are:
 
-<pre>
-  "IN TMS 9900 TIMON"
-  >>U    "Using the terminal programme now upload the file MONITOR.H99
-  >>U    "Using the terminal programme now upload the file BDOS.H99
-  >>U    "Using the terminal programme now upload the file SHELL.H99
-  >>U    "Using the terminal programme now upload DISKINT2.H99 to address 0100H
-  >>0100 X  "This execute the DISKINIT code to initialise the disc.
-</pre>
+```
+  <TMS9900 DISC MONITOR V2.1>
+  >U    Using the terminal programme now upload the file BDOS2.H99
+  >U    Using the terminal programme now upload the file SHELL2.H99
+  >U    Using the terminal programme now upload DISKINT2.H99
+  >0100G  This execute the DISKINIT code to initialise the disc.
+  >Q    This will boot the Operating System from the disc.
+```
 
 
