@@ -23,11 +23,11 @@ The board is designed to communicate through a standard DTE/DTA RS232 serial con
 
 Terminal software on the PC can be readily found on the internet and you should chose the one that has the interface you feel most comfortable with. The important requirement is that the terminal programme is able to download files.
 
-### Terminal Session
-Installing the MONITOR DISC ROMs
-The DISC Monitor can reside in either a 2716 or 2732 (16k or 32k) ROM located at address F000H in the TMS99105's memory space and because the CPU is 16 bit requires that if you use 8bit EPROMs such as the 2716 or 2732 that you split the DEBUG Monitor HEX file into upper and lower bytes. The a99.exe assembler produces INTEL format HEX files for loading into an EPROM burner so that the EPROMs can be programmed. The complete package, including the source, HEX files and the assembler can be downloaded from here. .
+### Typical Terminal Session
+A typical Terminal Session is shown below.  On power-up the SBC load the Monitor that provides low level memory inspection facilities etc.   The Quick Boot (Q) instruction will interact with the IDE drive to boot the operating system (BDOS and Shell).  The XMODEM application allows large files to be transferred to the SBC and stored on disc.   In the terminal session you can see that the SIEVE application has been downloaded using XMODEM and executed.
 
-<img src="images/TerminalSession.png" alt="CommsInterface" width="550" >
+###Installing the MONITOR DISC ROMs
+The DISC Monitor can reside in either a 2716 or 2732 (16k or 32k) ROM located at address F000H in the TMS99105's memory space and because the CPU is 16 bit requires that if you use 8bit EPROMs such as the 2716 or 2732 that you split the DEBUG Monitor HEX file into upper and lower bytes. The a99.exe assembler produces INTEL format HEX files for loading into an EPROM burner so that the EPROMs can be programmed. The complete package, including the source, HEX files and the assembler can be downloaded from this site.  
 
 ### ROM Memory Map
 The programming of the EPROMS can be a little tricky and the following memory map hopefully makes sense of it. As we are using 2732 (32k) EPROMs and because we have our TIMON debugging monitor located at F000H we need to offset the location of code in the EPROMS 0800H. So, if you are using an EPROM burner similar to the Wellon VP-280 (which is what I use) you would load the file odd bytes into the programme's memory specifiying a length of 1000H and a buffer destination location of 0800H, which corresponds to the hex file's location of f000h. Because the HEX file combines the upper and lower bytes you need to specify this when reading the file into the programmer by (for the high bytes) that the files alternate bytes are read.   See the following diagram.
