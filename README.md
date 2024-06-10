@@ -19,7 +19,7 @@ From the circuit diagram of the TMS99105 SBC it should be apparent that the boar
 Communications Interface
 The board is designed to communicate through a standard DTE/DTA RS232 serial connection to the user terminal which will normally be a PC running a terminal application. This application can then be used to execute commands on the SBC and to download programmes, etc. A typical interface is shown on the left.
 
-<img src="images/CommunicationsInterface.png" alt="CommsInterface" width="350" >
+<img src="images/TMS99000_Interfaces.png" alt="CommsInterface" width="350" >
 
 Terminal software on the PC can be readily found on the internet and you should chose the one that has the interface you feel most comfortable with. The important requirement is that the terminal programme is able to download files.
 
