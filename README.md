@@ -26,7 +26,9 @@ Terminal software on the PC can be readily found on the internet and you should 
 ### Typical Terminal Session
 A typical Terminal Session is shown below.  On power-up the SBC load the Monitor that provides low level memory inspection facilities etc.   The Quick Boot (Q) instruction will interact with the IDE drive to boot the operating system (BDOS and Shell).  The XMODEM application allows large files to be transferred to the SBC and stored on disc.   In the terminal session you can see that the SIEVE application has been downloaded using XMODEM and executed.
 
-###Installing the MONITOR DISC ROMs
+<img src="images/TerminalSession.png" alt="CommsInterface" width="550" >
+
+### Installing the MONITOR DISC ROMs
 The DISC Monitor can reside in either a 2716 or 2732 (16k or 32k) ROM located at address F000H in the TMS99105's memory space and because the CPU is 16 bit requires that if you use 8bit EPROMs such as the 2716 or 2732 that you split the DEBUG Monitor HEX file into upper and lower bytes. The a99.exe assembler produces INTEL format HEX files for loading into an EPROM burner so that the EPROMs can be programmed. The complete package, including the source, HEX files and the assembler can be downloaded from this site.  
 
 ### ROM Memory Map
