@@ -21,7 +21,7 @@ The board is designed to communicate through a standard DTE/DTA RS232 serial con
 
 <img src="images/TMS99000_Interfaces.png" alt="CommsInterface" width="350" >
 
-Terminal software on the PC can be readily found on the internet and you should chose the one that has the interface you feel most comfortable with. The important requirement is that the terminal programme is able to download files.
+Terminal software on the PC can be readily found on the internet and you should chose the one that has the interface you feel most comfortable with. The important requirement is that the terminal programme is able to upload files using raw file and xmodem protocol.
 
 ### Typical Terminal Session
 A typical Terminal Session is shown below.  On power-up the SBC load the Monitor that provides low level memory inspection facilities etc.   The Quick Boot (Q) instruction will interact with the IDE drive to boot the operating system (BDOS and Shell).  The XMODEM application allows large files to be transferred to the SBC and stored on disc.   In the terminal session you can see that the SIEVE application has been downloaded using XMODEM and executed.
