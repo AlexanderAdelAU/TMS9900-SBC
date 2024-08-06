@@ -19,7 +19,7 @@ The SBC memory is organised in three tiers.   The first is a Common SRAM (that i
 
 The memory map is shown below:
 
-<img src="images/TMS9900 Memory Map.drawio.png" alt="Rotated Image" width="750" >
+<img src="Memory Structure/TMS9900 Memory Map.drawio.png" alt="Memory Structure" width="750" >
 
 ### Terminal Communications Interface
 Communications Interface
