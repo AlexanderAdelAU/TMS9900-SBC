@@ -37,7 +37,7 @@ Accessing the segmented memory is made relatively easy in the TMS99105A with the
   ;
   ; FUNCTION 1 IN MEMORY SEGMENT 1
   ;
-  FUNCT1: MOV	    R3,R7	;NOTE THAT REGISTERS ARE IN SHARED MEMORY
+  FUNCT1: MOV	    R3,R7	;NOTE THAT REGISTERS ARE IN SHARED OR COMMON MEMORY
   	  ;
   	  ; DO SOMETHING WITH R3 AND R7 AND PRINT R7
      	  ;
