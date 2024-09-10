@@ -26,7 +26,7 @@ Accessing the segmented memory is made relatively easy in the TMS99105A with the
 
 ```
     ;
-    ; SET PAGE and LONG_CALL EXAMPLE
+    ; SET PAGE and LONG_CALL EXAMPLE IN MEMORY SEGMENT 0
     ;
 	LI           R9,0100H	;SET MEMORY SEGMENT REGISTER TO PAGE 1, RETURN PAGE 0
 	SET_PAGE     R9
