@@ -22,7 +22,7 @@ The memory map is shown below:
 <img src="Memory Structure/TMS9900 Memory Map.drawio.png" alt="Memory Structure" width="750" >
 
 ## Segmented Memory - Software Support
-Accessing the segmented memory is made relatively easy in the TMS99105A with the ability to programme the PSEL output signal using the status register's bit 8.  Whilst the LDD and LDS macro commands can be used to access data in other pages to call subroutines or functions you need to implement a calling routine.  This has been done using an XOPs for LONG_CALL and RETF.  These routines can be found in the DISC_MONITOR source code.  Managing the segments is done through allocating Register R9 as the Segment Register and a call to the XOP function (SET_PAGE).  So if PSEL remains High, then SET_PAGE has no effect at all.  For example:
+Accessing the segmented memory is made relatively easy in the TMS99105A with the ability to programme the PSEL output signal using the status register's bit 8.  Whilst the LDD and LDS macro commands can be used to access data in other pages to call subroutines or functions you need to implement a calling routine.  This has been done using XOPs for LONG_CALL and RETF.  These routines can be found in the DISC_MONITOR source code.  Managing the segments is done through allocating Register R9 as the Segment Register and a call to the XOP function (SET_PAGE).  So if PSEL remains High, then SET_PAGE has no effect at all.  For example:
 
 	;
     ; SET PAGE and LONG_CALL EXAMPLE
