@@ -33,7 +33,7 @@ Accessing the segmented memory is made relatively easy in the TMS99105A with the
 
 Note, that setting the page using the XOP Call (SET_PAGE) acts in a similar manner to the Memory Mapper (74LS612)  in that the address register is set but has no affect until the PSEL signal goes low.  So using the SET_PAGE is just a method os telling the LDS and LDD and LONG_CALLs which page to access.
 
-The XOP LONG_CALL routine will push the value of R9, and Instruction pointer onto the stack before making the long call.
+The XOP LONG_CALL routine will push the value of R9, and return Instruction pointer onto the stack before making the long call.
 
 ### Terminal Communications Interface
 Communications Interface
