@@ -29,7 +29,18 @@ Accessing the segmented memory is made relatively easy in the TMS99105A with the
     ;
 	LI           R9,0100H	;SET MEMORY SEGMENT REGISTER TO PAGE 1, RETURN PAGE 0
 	SET_PAGE     R9
+ 	PUSH	     R3
 	LONG_CALL    @FUNC1
+ 	RET
+  ;
+  ; FUNCTION 1 IN MEMORY SEGMENT 1
+  ;
+  FUNCT1: POP	    R3
+  	  ;
+  	  ; DO SOMETHING
+     	  ;
+       	  RETF
+     
 
 Note, that setting the page using the XOP Call (SET_PAGE) acts in a similar manner to the Memory Mapper (74LS612)  in that the address register is set but has no affect until the PSEL signal goes low.  So using the SET_PAGE is just a method os telling the LDS and LDD and LONG_CALLs which page to access.
 
