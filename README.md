@@ -25,24 +25,51 @@ The memory map is shown below:
 Accessing the segmented memory is made relatively easy in the TMS99105A with the ability to programme the PSEL output signal using the status register's bit 8.  Whilst the LDD and LDS macro commands can be used to access data in other pages to call subroutines or functions you need to implement a calling routine.  This has been done using XOPs for LONG_CALL and RETF.  These routines can be found in the DISC_MONITOR source code.  Managing the segments is done through allocating Register R9 as the Segment Register and a call to the XOP function (SET_PAGE).  So if PSEL remains High, then SET_PAGE has no effect at all.  For example:
 
 ```
-    ;
-    ; SET PAGE and LONG_CALL EXAMPLE IN MEMORY SEGMENT 0
-    ;
-	LI           R9,0100H	;SET MEMORY SEGMENT REGISTER TO PAGE 1, RETURN PAGE 0
-	SET_PAGE     R9
- 	LI	     R3,ABC
-	LONG_CALL    @FUNC1
-	C	     R3,R7
- 	RET
-  ;
-  ; FUNCTION 1 IN MEMORY SEGMENT 1
-  ;
-  FUNCT1: MOV	    R3,R7	;NOTE THAT REGISTERS ARE IN SHARED OR COMMON MEMORY
-  	  ;
-  	  ; DO SOMETHING WITH R3 AND R7 AND PRINT R7
-     	  ;
-	  WHEX	   R7		;ALL XOP FUNCTIONS ARE IN ROM WHICH IS COMMON MEMORY
-       	  RETF
+;
+;================================================
+; MAIN IN SEG 0
+; NOTE: R9 IS THE SEGMENT REGISTER.
+; UPPER BYTE SETS THE PAGE REGISTER, LOWER BYTE IS CALLING PAGE
+;=================================================
+	MESG	@GREETM		;ASSUME DEFAULT IS SEGMENT 0
+	LI 	R9,0100H	;FAR CALLS ARE TO SEGMENT 1
+	SETPAGE			;SET THE SEGMENT REGISTER
+	CALL_FAR	@MOD1		;
+	CALL_FAR	@MOD2
+	WHEX	R1		;WRITE OUT RETURN VALUE
+	B	@MONITOR
+;
+GREETM:	BYTE	0AH,0DH
+	TEXT	'Memory Segmentation Tests...'
+	BYTE 	0AH,0DH,0
+;
+;===================================================
+; MODULE 1 IN SEG 1
+;===================================================
+	SEG  1
+	AORG	500H		;LOAD ADDRESS
+;
+; WRITE GREETING TO THE CONSOLE USING DISC-MONITOR
+;
+MOD1:	MESG	@M1G
+	RETF
+		
+M1G:	TEXT	"Hello from Module 1."
+	BYTE	0DH,0AH,0
+;
+;====================================================
+; MODULE 2 IN SEG 1
+;====================================================
+	SEG	1
+MOD2:	AORG 	0E800H		;LOAD ADDRESS
+;
+; WRITE GREETING TO THE CONSOLE USING DISC-MONITOR
+;
+	MESG	@M2G
+	LI	R1,1	;RETURN SUCCESS
+	RETF
+M2G:	TEXT	"Hello from Module 2."
+	BYTE	0DH,0AH,0
 ``` 
 
 Note, that setting the page using the XOP Call (SET_PAGE) acts in a similar manner to the Memory Mapper (74LS612)  in that the address register is set but has no affect until the PSEL signal goes low.  So using the SET_PAGE is just a method os telling the LDS and LDD and LONG_CALLs which page to access.
