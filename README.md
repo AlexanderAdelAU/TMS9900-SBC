@@ -22,8 +22,7 @@ The memory map is shown below:
 <img src="Memory Structure/TMS9900 Memory Map.drawio.png" alt="Memory Structure" width="750" >
 
 #### Segmented Memory - Software Support
-Accessing the segmented memory is made relatively easy in the TMS99105A with the ability to programme the PSEL output signal using the status register's bit 8.  Whilst the LDD and LDS macro commands can be used to access data in other pages to call subroutines or functions you need to implement a calling routine.  This has been done using XOPs for LONG_CALL and RETF.  These routines can be found in the DISC_MONITOR source code.  Managing the segments is done through allocating Register R9 as the Segment Register and a call to the XOP function (SET_PAGE).  So if PSEL remains High, then SET_PAGE has no effect at all.  For example:
-
+Accessing the segmented memory is made relatively easy in the TMS99105A with the ability to programme the PSEL output signal using the status register's bit 8.  Whilst the LDD and LDS macro commands can be used to access data in other pages to call subroutines or functions you need to implement a calling routine.  This has been done using XOPs for CALL_FAR and RETF.  These routines can be found in the DISC_MONITOR source code.  Managing the segments is done through allocating Register R9 as the Segment Register and a call to the XOP function (SETPAGE).  So if PSEL remains High, then SET_PAGE has no effect at all.  For example:
 ```
 ;
 ;================================================
@@ -72,9 +71,9 @@ M2G:	TEXT	"Hello from Module 2."
 	BYTE	0DH,0AH,0
 ``` 
 
-Note, that setting the page using the XOP Call (SET_PAGE) acts in a similar manner to the Memory Mapper (74LS612)  in that the address register is set but has no affect until the PSEL signal goes low.  So using the SET_PAGE is just a method os telling the LDS and LDD and LONG_CALLs which page to access.
+Note, that setting the page using the XOP Call (SETPAGE) acts in a similar manner to the Memory Mapper (74LS612)  in that the address register is set but has no affect until the PSEL signal goes low.  So using the SETPAGE is just a method os telling the LDS and LDD and CALL_FAR which page to access.
 
-The XOP LONG_CALL routine will push the value of R9, and return Instruction pointer onto the stack before making the long call.
+The XOP CALL_FAR routine will push the value of the segment register (R9), and return Instruction pointer onto the stack before making the long call.
 
 ### Terminal Communications Interface
 Communications Interface
