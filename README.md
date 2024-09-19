@@ -30,6 +30,9 @@ Accessing the segmented memory is made relatively easy in the TMS99105A with the
 ; NOTE: R9 IS THE SEGMENT REGISTER.
 ; UPPER BYTE SETS THE PAGE REGISTER, LOWER BYTE IS CALLING PAGE
 ;=================================================
+	SEG  0
+	LI 	R9,0000H	;SET SEGNEBT 0 AS DEFAULT
+	SETPAGE			;SET THE SEGMENT TO R9
 	MESG	@GREETM		;ASSUME DEFAULT IS SEGMENT 0
 	LI 	R9,0100H	;FAR CALLS ARE TO SEGMENT 1
 	SETPAGE			;SET THE SEGMENT REGISTER
@@ -71,9 +74,7 @@ M2G:	TEXT	"Hello from Module 2."
 	BYTE	0DH,0AH,0
 ``` 
 
-Note, that setting the page using the XOP Call (SETPAGE) acts in a similar manner to the Memory Mapper (74LS612)  in that the address register is set but has no affect until the PSEL signal goes low.  So using the SETPAGE is just a method os telling the LDS and LDD and CALL_FAR which page to access.
-
-The XOP CALL_FAR routine will push the value of the segment register (R9), and return Instruction pointer onto the stack before making the long call.
+Note, that setting the page using the XOP Call (SETPAGE) acts in a similar manner to the Memory Mapper (74LS612)  in that the address register is set but has no affect until the PSEL signal goes low.  So using the SETPAGE is just a method os telling the LDS and LDD and CALL_FAR which page to access.  The XOP CALL_FAR routine will push the value of the segment register (R9), and return Instruction pointer onto the stack before making the long call. The SEG pseudo op does nothing more that insert the segment value into the assembler hex code output so that the monitor or any other load software can load the module into the desired memory segment.
 
 ### Terminal Communications Interface
 Communications Interface
