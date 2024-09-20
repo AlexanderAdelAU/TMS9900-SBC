@@ -30,7 +30,7 @@ Here is an example:
 ```
 ;
 ;================================================
-; MAIN IN SEG 0
+; MAIN IN RUNNING IN SEG 0
 ; NOTE: R9 IS THE SEGMENT REGISTER.
 ; UPPER BYTE SETS THE PAGE REGISTER, LOWER BYTE IS CALLING PAGE
 ;=================================================
@@ -50,7 +50,7 @@ GREETM:	BYTE	0AH,0DH
 	BYTE 	0AH,0DH,0
 ;
 ;===================================================
-; MODULE 1 IN SEG 1
+; MODULE 1 RUNNING IN SEG 1
 ;===================================================
 	SEG  1
 	AORG	500H		;LOAD ADDRESS
@@ -64,7 +64,7 @@ M1G:	TEXT	"Hello from Module 1."
 	BYTE	0DH,0AH,0
 ;
 ;====================================================
-; MODULE 2 IN SEG 1
+; MODULE 2 RUNNING IN SEG 1
 ;====================================================
 	SEG	1
 MOD2:	AORG 	0E800H		;LOAD ADDRESS
