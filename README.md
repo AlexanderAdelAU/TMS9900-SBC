@@ -22,7 +22,11 @@ The memory map is shown below:
 <img src="Memory Structure/TMS9900 Memory Map.drawio.png" alt="Memory Structure" width="750" >
 
 #### Segmented Memory - Software Support
-Accessing the segmented memory is made relatively easy in the TMS99105A with the ability to programme the PSEL output signal using the status register's bit 8.  Whilst the LDD and LDS macro commands can be used to access data in other pages to call subroutines or functions you need to implement a calling routine.  This has been done using XOPs for CALL_FAR and RETF.  These routines can be found in the DISC_MONITOR source code.  Managing the segments is done through allocating Register R9 as the Segment Register and a call to the XOP function (SETPAGE).  So if PSEL remains High, then SETPAGE has no effect at all.  For example:
+Accessing the segmented memory is made relatively easy in the TMS99105A with the ability to programme the PSEL output signal using the status register's bit 8.  Whilst the LDD and LDS macro commands can be used to access data in other pages to call subroutines or functions you need to implement a calling routine.  This has been done using XOPs for CALL_FAR and RETF.  These routines can be found in the DISC_MONITOR source code.  
+
+Managing the segments is done through allocating Register R9 as the Segment Register and a call to the XOP function (SETPAGE) which acts in a similar manner to the Memory Mapper (74LS612)  in that sets the  mapping address (contained in R9).  So when PSEL is high (bit 8 low) the normal 15 addresses are presented to the memory controller.  When PSEL signal goes low, in similar manner to the 74LS612 memory mapper, the previously set mapping address is presented to the memory controller.  This is effectivel a single register memory mapper, which just means that each time you want to select a memory segment, that you need to place the value into the upper byte of R9 and the call SETPAGE. .  The segment address register contains 2 bytes.  The upper byte is the page that is in effect, and the lower byte is the page that is base page, in the event a long or far call is made.  The XOP CALL_FAR routine will push the value of the segment register (R9), and return Instruction pointer onto the stack before making the long call. 
+
+Here is an example:
 ```
 ;
 ;================================================
@@ -73,8 +77,6 @@ MOD2:	AORG 	0E800H		;LOAD ADDRESS
 M2G:	TEXT	"Hello from Module 2."
 	BYTE	0DH,0AH,0
 ``` 
-
-Note, that setting the page using the XOP Call (SETPAGE) acts in a similar manner to the Memory Mapper (74LS612)  in that the segment address register (R9) is set but has no affect until the PSEL signal goes low.  The segment address register contains 2 bytes.  The upper byte is the page that is in effect, and the lower byte is the page that is base page, in the event a long or far call is made.  So using the SETPAGE is just a method os telling the LDS and LDD and CALL_FAR which page to access.  The XOP CALL_FAR routine will push the value of the segment register (R9), and return Instruction pointer onto the stack before making the long call. The SEG pseudo op does nothing more that insert the segment value into the assembler hex code output so that the monitor or any other load software can load the module into the desired memory segment.
 
 ### Terminal Communications Interface
 Communications Interface
