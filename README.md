@@ -1,4 +1,4 @@
-# TMS9900-SBC
+# TMS9900/99105-SBC
 ## TMS9900/99105A Single Board Computer
 
 ### A bit of history
